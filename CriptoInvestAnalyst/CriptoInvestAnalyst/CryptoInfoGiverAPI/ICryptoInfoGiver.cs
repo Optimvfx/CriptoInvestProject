@@ -4,11 +4,17 @@ namespace CryptoInvestAnalyst
 {
     public interface ICryptoInfoGiver
     {
-        double GetPrice(Crypto comperable, Crypto comperer);
 
         IEnumerable<CriptoFullInfo> GetAvailableCoins();
-
     }
+
+    public interface ICriptoInfoPriceGiver
+    {
+        double GetPrice(Crypto comperable, Crypto comperer);
+
+        IEnumerable<double> GetPrices(Crypto[] comperables, Crypto comperer);
+    }
+
     public enum Crypto
     {
         BTC,

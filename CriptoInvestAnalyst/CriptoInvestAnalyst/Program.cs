@@ -7,11 +7,12 @@ namespace CryptoInvestAnalyst
 
         public static void Main(string[] args)
         {
-            var g = new CryptoInfoGiver();
+            var g = new CryptoInfoGiver.PriceGiver();
 
-            var result = g.GetPrice(Crypto.BTC, Crypto.USD);
+            g.GetPrice(Crypto.BTC, Crypto.ETH);
 
-            Console.WriteLine(result);
+            foreach (var gg in g.GetPrices(new[] { Crypto.USD, Crypto.ETH, Crypto.BTC }, Crypto.ETH))
+                Console.WriteLine(gg);
 
             Console.ReadLine();
         }

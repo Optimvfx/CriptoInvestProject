@@ -17,9 +17,12 @@ namespace CryptoInvestAnalyst
 
                 FormUrlEncodedContent content = new FormUrlEncodedContent(parameters);
 
+                foreach(var kvp in (IEnumerable<KeyValuePair<string,string>>) parameters)
+                    Console.WriteLine(kvp);
+
                 var answer = client.PostAsync(adderss, content).Result.Content.ReadAsStringAsync().Result;
 
-                return JsonConvert.DeserializeObject(answer).ToString();
+                return answer.ToString();
             }
             catch (Exception exception)
             {

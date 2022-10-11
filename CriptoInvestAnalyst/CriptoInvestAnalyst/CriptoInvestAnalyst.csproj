@@ -106,6 +106,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Extenstions\Extenstions.csproj">
+      <Project>{85a1eb17-66a6-4911-a02e-8bd55f517c8e}</Project>
+      <Name>Extenstions</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
