@@ -1,6 +1,6 @@
 ﻿using AngleSharp.Html.Dom;
 
-namespace CriptoInvestAnalyst
+namespace CryptoInvestAnalyst
 {
     public interface IParser<T>
         where T : class

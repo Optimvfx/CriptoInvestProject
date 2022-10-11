@@ -1,4 +1,4 @@
-﻿namespace CriptoInvestAnalyst
+﻿namespace CryptoInvestAnalyst
 {
     public class HabrExtraUrlArguments : HtmlLoaderExtraUrlArguments
     {

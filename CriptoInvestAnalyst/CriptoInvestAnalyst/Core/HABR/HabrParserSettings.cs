@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CriptoInvestAnalyst
+namespace CryptoInvestAnalyst
 {
     public class HabrParserSettings : IParserSettings
     {

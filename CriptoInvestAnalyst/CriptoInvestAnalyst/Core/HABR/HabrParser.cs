@@ -2,7 +2,7 @@
 using System;
 using System.Linq;
 
-namespace CriptoInvestAnalyst
+namespace CryptoInvestAnalyst
 {
     public class HabrParser : IParser<string[]>
     {

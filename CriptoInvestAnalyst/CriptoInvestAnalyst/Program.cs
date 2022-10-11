@@ -1,15 +1,19 @@
-﻿using AngleSharp.Html.Parser;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 
-namespace CriptoInvestAnalyst
+namespace CryptoInvestAnalyst
 {
     internal class Program
-    { 
-        private static void Main()
-        { 
+    {
 
+        public static void Main(string[] args)
+        {
+            var g = new CryptoInfoGiver();
+
+            var result = g.GetPrice(Crypto.BTC, Crypto.USD);
+
+            Console.WriteLine(result);
+
+            Console.ReadLine();
         }
     }
 }
