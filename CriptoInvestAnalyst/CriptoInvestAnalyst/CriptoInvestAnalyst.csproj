@@ -89,8 +89,14 @@
     <Compile Include="Core\HtmlLoader.cs" />
     <Compile Include="Core\IParser.cs" />
     <Compile Include="Core\IParserSettings.cs" />
+    <Compile Include="CryptoInfoGiverAPI\Class\CryptoBaseAskExteption.cs" />
+    <Compile Include="CryptoInfoGiverAPI\Class\PriceInfo.cs" />
+    <Compile Include="CryptoInfoGiverAPI\CriptoInfoPriceGiver.cs" />
+    <Compile Include="CryptoInfoGiverAPI\Class\Crypto.cs" />
     <Compile Include="CryptoInfoGiverAPI\CryptoInfoGiver.cs" />
-    <Compile Include="CryptoInfoGiverAPI\ICryptoInfoGiver.cs" />
+    <Compile Include="CryptoInfoGiverAPI\Interface\ICryptoInfoGiver.cs" />
+    <Compile Include="CryptoInfoGiverAPI\Interface\ICryptoInfoHistorialGiver.cs" />
+    <Compile Include="CryptoInfoGiverAPI\Interface\ICryptoInfoPriceGiver.cs" />
     <Compile Include="Parse\CryptoParser.cs" />
     <Compile Include="Parse\Models\CriptoFullInfo.cs" />
     <Compile Include="Parse\Parser.cs" />

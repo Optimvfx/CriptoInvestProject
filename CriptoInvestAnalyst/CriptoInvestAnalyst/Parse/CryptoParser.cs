@@ -6,7 +6,7 @@ namespace CryptoInvestAnalyst
 {
     public class CryptoParser
     {
-        private readonly List<char> _spleatChar = new List<char>(new[] { '{', '}' });
+        private readonly List<char> _spleatChar = new List<char>(new[] { '{', '}', '[', ']' });
         private readonly List<char> _removeChar = new List<char>(new[] { ','});
 
         public List<string> Parse(string from)

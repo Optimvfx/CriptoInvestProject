@@ -7,7 +7,7 @@ namespace CryptoInvestAnalyst
 {
     public class Parser
     {
-        public string GetRequest(string adderss, Dictionary<string, string> parameters)
+        public string GetRequest(string adderss, Dictionary<string, string> parameters, bool jsonParse = false)
         {
             HttpClient client = new HttpClient();
 
@@ -17,10 +17,11 @@ namespace CryptoInvestAnalyst
 
                 FormUrlEncodedContent content = new FormUrlEncodedContent(parameters);
 
-                foreach(var kvp in (IEnumerable<KeyValuePair<string,string>>) parameters)
-                    Console.WriteLine(kvp);
-
                 var answer = client.PostAsync(adderss, content).Result.Content.ReadAsStringAsync().Result;
+
+                if (jsonParse)
+                    return JsonConvert.DeserializeObject(answer).ToString();
+
 
                 return answer.ToString();
             }
