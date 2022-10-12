@@ -94,11 +94,13 @@
     <Compile Include="CryptoInfoGiverAPI\CriptoInfoPriceGiver.cs" />
     <Compile Include="CryptoInfoGiverAPI\Class\Crypto.cs" />
     <Compile Include="CryptoInfoGiverAPI\CryptoInfoGiver.cs" />
+    <Compile Include="CryptoInfoGiverAPI\CryptoInfoHistorialGiver.cs" />
     <Compile Include="CryptoInfoGiverAPI\Interface\ICryptoInfoGiver.cs" />
     <Compile Include="CryptoInfoGiverAPI\Interface\ICryptoInfoHistorialGiver.cs" />
     <Compile Include="CryptoInfoGiverAPI\Interface\ICryptoInfoPriceGiver.cs" />
     <Compile Include="Parse\CryptoParser.cs" />
     <Compile Include="Parse\Models\CriptoFullInfo.cs" />
+    <Compile Include="Parse\Models\CryptoPairInfo.cs" />
     <Compile Include="Parse\Parser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -108,9 +110,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Parse\Json\CriptoFullInfo.txt">
+    <Content Include="Parse\Json\CryptoLableInfo.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Parse\Json\CryptoPairInfo.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Extenstions\Extenstions.csproj">

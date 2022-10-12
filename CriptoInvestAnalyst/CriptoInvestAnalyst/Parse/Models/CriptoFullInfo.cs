@@ -1,6 +1,6 @@
 ﻿namespace CryptoInvestAnalyst
 {
-    public struct CriptoFullInfo
+    public struct CryptoLableInfo
     {
         [Newtonsoft.Json.JsonProperty("id")]
         public int Id { get; set; }

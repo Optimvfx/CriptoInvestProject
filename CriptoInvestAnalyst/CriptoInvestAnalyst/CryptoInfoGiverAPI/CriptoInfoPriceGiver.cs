@@ -16,7 +16,7 @@ namespace CryptoInvestAnalyst
 
         private const int _parsemultiCompareResultOffsetRowIndex = 3;
 
-        private ICryptoInfoGiver _cryptoInfoGiver;
+        private readonly ICryptoInfoGiver _cryptoInfoGiver;
 
         public CryptoInfoPriceGiver(ICryptoInfoGiver cryptoInfoGiver)
         {
@@ -33,7 +33,7 @@ namespace CryptoInvestAnalyst
                 var addresAppend = GetExtraSourceArguments(new[] { comperable }, comperer);
                 var parsedAnswer = _cryptoInfoGiver.Parse(_getPriceAskAddres, addresAppend);
 
-                return GetPrice(parsedAnswer[_compareResultOffsetRowIndex], comperable);
+                return ReadPrice(parsedAnswer[_compareResultOffsetRowIndex], comperable);
             }
             catch (Exception exception)
             {
@@ -52,7 +52,7 @@ namespace CryptoInvestAnalyst
 
             for (int currentRow = _compareResultOffsetRowIndex; currentRow < parsedAnswer.Count - _compareResultOffsetRowIndex; currentRow++)
             {
-                yield return GetPrice(parsedAnswer[currentRow], comperables[currentRow - _compareResultOffsetRowIndex]);
+                yield return ReadPrice(parsedAnswer[currentRow], comperables[currentRow - _compareResultOffsetRowIndex]);
             }
         }
 
@@ -67,6 +67,18 @@ namespace CryptoInvestAnalyst
                 var addresAppend = GetExtraSourceArguments(comperables, comperers);
                 var parsedAnswer = _cryptoInfoGiver.Parse(_getPricemultiAskAddres, addresAppend);
 
+                return ReadPrices(parsedAnswer, comperables, comperers);
+            }
+            catch (Exception exception)
+            {
+                throw new CryptoBaseAskExteption(exception);
+            }
+        }
+
+        private Dictionary<Crypto, List<PriceInfo>> ReadPrices(List<string> parsedAnswer, Crypto[] comperables, Crypto[] comperers)
+        {
+            try
+            {
                 int currentParsedAnswerIndex = _parsemultiCompareResultOffsetRowIndex;
 
                 var comperableToComperersPrice = new Dictionary<Crypto, List<PriceInfo>>();
@@ -77,7 +89,7 @@ namespace CryptoInvestAnalyst
 
                     for (int currentComperable = 0; currentComperable < comperables.Length; currentComperable++)
                     {
-                        var newPriceInfo = new PriceInfo(comperables[currentComperable], GetPrice(parsedAnswer[currentParsedAnswerIndex], comperables[currentComperable]));
+                        var newPriceInfo = new PriceInfo(comperables[currentComperable], ReadPrice(parsedAnswer[currentParsedAnswerIndex], comperables[currentComperable]));
                         comperableToComperersPrice[comperers[currentComperer]].Add(newPriceInfo);
 
                         currentParsedAnswerIndex++;
@@ -94,7 +106,7 @@ namespace CryptoInvestAnalyst
             }
         }
 
-        private double GetPrice(string parsedAnswerPriceInfo, Crypto comperable)
+        private double ReadPrice(string parsedAnswerPriceInfo, Crypto comperable)
         {
             try
             {

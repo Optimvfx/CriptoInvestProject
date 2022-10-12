@@ -30,7 +30,7 @@ namespace CryptoInvestAnalyst
         #region BlockChainData
         private const string _getAvaibleCoinsAskAddres = "blockchain/list";
 
-        public IEnumerable<CriptoFullInfo> GetAvailableCoins()
+        public IEnumerable<CryptoLableInfo> GetAvailableCoins()
         {
             var parsedAnswer = Parse(_getAvaibleCoinsAskAddres);
 
@@ -40,7 +40,7 @@ namespace CryptoInvestAnalyst
             const int elementInfoOffsetLeft = 2;
             const int elementInfoOffsetRight = 1;
 
-            var cryptoFullInfos = new List<CriptoFullInfo>();
+            var cryptoFullInfos = new List<CryptoLableInfo>();
 
             for (int i = availableArrayStart; i < parsedAnswer.Count - (parsedAnswer.Count % elementInfoLength); i += elementInfoLength)
             {
@@ -55,7 +55,7 @@ namespace CryptoInvestAnalyst
 
                 elementInfo.Append("}");
 
-                var newCryptoFullInfo = JsonConvert.DeserializeObject<CriptoFullInfo>(elementInfo.ToString());
+                var newCryptoFullInfo = JsonConvert.DeserializeObject<CryptoLableInfo>(elementInfo.ToString());
 
                 cryptoFullInfos.Add(newCryptoFullInfo);
             }
