@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{148E8297-9B9E-450B-A3B4-985C402F571B}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>CriptoInvestAnalyst</RootNamespace>
     <AssemblyName>CriptoInvestAnalyst</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -99,10 +99,9 @@
     <Compile Include="CryptoInfoGiverAPI\Interface\ICryptoInfoHistorialGiver.cs" />
     <Compile Include="CryptoInfoGiverAPI\Interface\ICryptoInfoPriceGiver.cs" />
     <Compile Include="Parse\CryptoParser.cs" />
-    <Compile Include="Parse\Models\CriptoFullInfo.cs" />
-    <Compile Include="Parse\Models\CryptoPairInfo.cs" />
+    <Compile Include="Parse\Models\CryptoLableInfo.cs" />
+    <Compile Include="Parse\Models\CryptoCurseInfo.cs" />
     <Compile Include="Parse\Parser.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

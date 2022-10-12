@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CriptoInvestAnalyst", "Crip
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extenstions", "Extenstions\Extenstions.csproj", "{85A1EB17-66A6-4911-A02E-8BD55F517C8E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Program", "Program\Program.csproj", "{F9886AFC-5BEE-44CF-9506-13E19DF50724}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphVisualizetion", "Visualizetion\GraphVisualizetion.csproj", "{6E7CBAD5-D366-425E-B776-B288D8F9016C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowCryptoGraph", "ShowCryptoGraph\ShowCryptoGraph.csproj", "{CD5516E1-D003-4818-AC25-BB15E2D7236A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +27,18 @@ Global
 		{85A1EB17-66A6-4911-A02E-8BD55F517C8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85A1EB17-66A6-4911-A02E-8BD55F517C8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{85A1EB17-66A6-4911-A02E-8BD55F517C8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9886AFC-5BEE-44CF-9506-13E19DF50724}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9886AFC-5BEE-44CF-9506-13E19DF50724}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9886AFC-5BEE-44CF-9506-13E19DF50724}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9886AFC-5BEE-44CF-9506-13E19DF50724}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E7CBAD5-D366-425E-B776-B288D8F9016C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E7CBAD5-D366-425E-B776-B288D8F9016C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E7CBAD5-D366-425E-B776-B288D8F9016C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E7CBAD5-D366-425E-B776-B288D8F9016C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD5516E1-D003-4818-AC25-BB15E2D7236A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD5516E1-D003-4818-AC25-BB15E2D7236A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD5516E1-D003-4818-AC25-BB15E2D7236A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD5516E1-D003-4818-AC25-BB15E2D7236A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
