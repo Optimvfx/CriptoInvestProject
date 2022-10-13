@@ -21,11 +21,17 @@ namespace CryptoInvestAnalyst
         };
 
         private static readonly Parser _parser = new Parser();
-        private static readonly CryptoParser _cryptoParser = new CryptoParser();
 
         public const char ApiDivideChar = ',';
         public const char FloatDotChar = ',';
         public const char ApiFloatDotChar = '.';
+
+        private readonly CryptoParser _cryptoParser;
+
+        public CryptoInfoGiver()
+        {
+            _cryptoParser = new CryptoParser((ICryptoInfoGiver)(this));
+        }
 
         #region BlockChainData
         private const string _getAvaibleCoinsAskAddres = "blockchain/list";
@@ -64,7 +70,6 @@ namespace CryptoInvestAnalyst
         }
         #endregion BlockChainData
 
-        #region Helping
         public string GetCryptoCollectionApiCode(IEnumerable<Crypto> cryptos)
         {
             try
@@ -118,6 +123,5 @@ namespace CryptoInvestAnalyst
         {
             return $"?api_key={_apyKey}";
         }
-        #endregion Helping
     }
 }

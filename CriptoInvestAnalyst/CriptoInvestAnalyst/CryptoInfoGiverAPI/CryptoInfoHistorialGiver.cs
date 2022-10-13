@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace CryptoInvestAnalyst
 {
@@ -10,57 +11,101 @@ namespace CryptoInvestAnalyst
         private readonly ICryptoInfoGiver _cryptoInfoGiver;
 
         private const string _daysPriceAskAddres = "v2/histoday";
+        private const string _hourPriceAskAddres = "v2/histohour";
+        private const string _minutePriceAskAddres = "v2/histominute";
+
+        private const string _getCurrentDayPriceAskAddres = "pricehistorical";
 
         private const int _cryptoCurseInfoStringLength = 11;
+
+        const int _priceAnswerDayInfoRowUpOffset = 15;
+        const int _priceAnswerDayInfoRowDownOffset = 3;
+
+        const int _dataPriceRowIndex = 3;
+
+        private readonly CryptoParser _cryptoParser;
 
         public CryptoInfoHistorialGiver(ICryptoInfoGiver cryptoInfoGiver)
         {
             _cryptoInfoGiver = cryptoInfoGiver;
+            _cryptoParser = new CryptoParser(_cryptoInfoGiver);
         }
-
 
         public IEnumerable<CryptoCurseInfo> GetDaysPrice(Crypto comperable, Crypto comperer, uint length)
         {
-            const int _dayPriceAnswerDayInfoRowUpOffset = 15;
-            const int _dayPriceAnswerDayInfoRowDownOffset = 3;
-
-            if (_cryptoInfoGiver.ContainsCryptoApiKey(comperable) == false || _cryptoInfoGiver.ContainsCryptoApiKey(comperer) == false)
-                throw new ArgumentException();
-
-            var parsedAnswer = _cryptoInfoGiver.Parse(_daysPriceAskAddres, GetExtraSourceArguments(comperable, comperer, length));
-
-            for (int i = _dayPriceAnswerDayInfoRowUpOffset; i < parsedAnswer.Count - _dayPriceAnswerDayInfoRowDownOffset; i += _cryptoCurseInfoStringLength)
+            try
             {
-                yield return ParseInfo(parsedAnswer, i);
+                return GetAskAddresPrice(_daysPriceAskAddres, comperable, comperer, length);
+            }
+            catch (Exception exeption)
+            {
+                throw new CryptoBaseAskExteption(exeption);
             }
         }
 
         public IEnumerable<CryptoCurseInfo> GetHourPrice(Crypto comperable, Crypto comperer, uint length)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return GetAskAddresPrice(_hourPriceAskAddres, comperable, comperer, length);
+            }
+            catch (Exception exeption)
+            {
+                throw new CryptoBaseAskExteption(exeption);
+            }
         }
 
         public IEnumerable<CryptoCurseInfo> GetMinutePrice(Crypto comperable, Crypto comperer, uint length)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return GetAskAddresPrice(_minutePriceAskAddres, comperable, comperer, length);
+            }
+            catch (Exception exeption)
+            {
+                throw new CryptoBaseAskExteption(exeption);
+            }
         }
 
-        public double GetDaysPrice(Crypto comperable, Crypto comperer, DateTimeOffset date)
+        public double GetDatePrice(Crypto comperable, Crypto comperer, DateTimeOffset date)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (_cryptoInfoGiver.ContainsCryptoApiKey(comperable) == false || _cryptoInfoGiver.ContainsCryptoApiKey(comperer) == false)
+                    throw new ArgumentException();
+
+                var parsedAnswer = _cryptoInfoGiver.Parse(_getCurrentDayPriceAskAddres, GetExtraDayPriceSourceArguments(comperable, comperer, date));
+
+                foreach (var p in parsedAnswer)
+                    Console.WriteLine(p);
+
+                return _cryptoParser.ReadPrice(parsedAnswer[_dataPriceRowIndex], comperable);
+            }
+            catch (Exception exeption)
+            {
+                throw new CryptoBaseAskExteption(exeption);
+            }
         }
 
-        public double GetHourPrice(Crypto comperable, Crypto comperer, DateTimeOffset date)
+        private IEnumerable<CryptoCurseInfo> GetAskAddresPrice(string addres, Crypto comperable, Crypto comperer, uint length)
         {
-            throw new NotImplementedException();
+            if (_cryptoInfoGiver.ContainsCryptoApiKey(comperable) == false || _cryptoInfoGiver.ContainsCryptoApiKey(comperer) == false)
+                throw new ArgumentException();
+
+            var parsedAnswer = _cryptoInfoGiver.Parse(addres, GetExtraTimeSpanPriceSourceArguments(comperable, comperer, length));
+
+            for (int i = _priceAnswerDayInfoRowUpOffset; i < parsedAnswer.Count - _priceAnswerDayInfoRowDownOffset; i += _cryptoCurseInfoStringLength)
+            {
+                yield return ParseInfo(parsedAnswer, i);
+            }
         }
 
-        public double GetMinutePrice(Crypto comperable, Crypto comperer, DateTimeOffset date)
+        private string GetExtraDayPriceSourceArguments(Crypto comperable, Crypto comperer, DateTimeOffset dateTime)
         {
-            throw new NotImplementedException();
+            return $"?fsym={_cryptoInfoGiver.CryptoToApiName(comperer)}&tsyms={_cryptoInfoGiver.CryptoToApiName(comperable)}&ts={dateTime.ToUnixTimeSeconds()}";
         }
 
-        private string GetExtraSourceArguments(Crypto comperable, Crypto comperer, uint length)
+        private string GetExtraTimeSpanPriceSourceArguments(Crypto comperable, Crypto comperer, uint length)
         {
             return $"?fsym={_cryptoInfoGiver.CryptoToApiName(comperer)}&tsym={_cryptoInfoGiver.CryptoToApiName(comperable)}&&limit={length}";
         }

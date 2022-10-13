@@ -1,8 +1,11 @@
 ﻿using CryptoInvestAnalyst;
 using GraphVisualizetion;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace ShowCryptoGraph
 {
@@ -39,13 +42,13 @@ namespace ShowCryptoGraph
             var currentMinimalPriceYIndex = -1;
 
             _visualizer.AddPointsToCurve(cryptoMinumalCurve, (uint)crytiCurvseInfosArray.Length,
-                (y) =>
+                (x) =>
                 {
                     currentMinimalPriceYIndex++;
                     return crytiCurvseInfosArray[currentMinimalPriceYIndex].MinimalPrice;
                 },
                 (x) =>
-                {
+                {   
                     return x + 1;
                 });
 

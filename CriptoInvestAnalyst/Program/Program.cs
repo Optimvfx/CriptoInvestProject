@@ -15,9 +15,11 @@ namespace Program
         {
             var show = new CryptoGraphShower(new Visualizer());
 
-            show.ShowCryptoGraph(new CryptoInfoHistorialGiver(new CryptoInfoGiver()).GetDaysPrice(Crypto.USD, Crypto.BTC, 2000));
+            show.ShowFaserOzenkaGraph(1000);
             show.ShowCryptoGraph(new CryptoInfoHistorialGiver(new CryptoInfoGiver()).GetDaysPrice(Crypto.USD, Crypto.ETH, 2000));
-            show.ShowCryptoGraph(new CryptoInfoHistorialGiver(new CryptoInfoGiver()).GetDaysPrice(Crypto.BTC, Crypto.ETH, 2000));
+            //     show.ShowCryptoGraph(new CryptoInfoHistorialGiver(new CryptoInfoGiver()).GetDatePrice(Crypto.BTC, Crypto.ETH, 2000));
+
+            Console.ReadLine();
         }
     }
 }

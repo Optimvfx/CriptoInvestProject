@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CryptoInvestAnalyst
 {
@@ -11,10 +12,6 @@ namespace CryptoInvestAnalyst
 
         IEnumerable<CryptoCurseInfo> GetMinutePrice(Crypto comperable, Crypto comperer, uint length);
 
-        double GetDaysPrice(Crypto comperable, Crypto comperer, DateTimeOffset date);
-
-        double GetHourPrice(Crypto comperable, Crypto comperer, DateTimeOffset date);
-
-        double GetMinutePrice(Crypto comperable, Crypto comperer, DateTimeOffset date);
+        double GetDatePrice(Crypto comperable, Crypto comperer, DateTimeOffset date);
     }
 }

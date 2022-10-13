@@ -12,15 +12,16 @@ namespace CryptoInvestAnalyst
         private const string _getPricemultiAskAddres = "pricemulti";
 
         private const int _compareResultOffsetRowIndex = 1;
-        private const int _compareResultOffsetX = 4;
 
         private const int _parsemultiCompareResultOffsetRowIndex = 3;
 
         private readonly ICryptoInfoGiver _cryptoInfoGiver;
+        private readonly CryptoParser _cryptoParser;
 
         public CryptoInfoPriceGiver(ICryptoInfoGiver cryptoInfoGiver)
         {
             _cryptoInfoGiver = cryptoInfoGiver;
+            _cryptoParser = new CryptoParser(_cryptoInfoGiver);
         }
 
         public double GetPrice(Crypto comperable, Crypto comperer)
@@ -33,7 +34,7 @@ namespace CryptoInvestAnalyst
                 var addresAppend = GetExtraSourceArguments(new[] { comperable }, comperer);
                 var parsedAnswer = _cryptoInfoGiver.Parse(_getPriceAskAddres, addresAppend);
 
-                return ReadPrice(parsedAnswer[_compareResultOffsetRowIndex], comperable);
+                return _cryptoParser.ReadPrice(parsedAnswer[_compareResultOffsetRowIndex], comperable);
             }
             catch (Exception exception)
             {
@@ -52,7 +53,7 @@ namespace CryptoInvestAnalyst
 
             for (int currentRow = _compareResultOffsetRowIndex; currentRow < parsedAnswer.Count - _compareResultOffsetRowIndex; currentRow++)
             {
-                yield return ReadPrice(parsedAnswer[currentRow], comperables[currentRow - _compareResultOffsetRowIndex]);
+                yield return _cryptoParser.ReadPrice(parsedAnswer[currentRow], comperables[currentRow - _compareResultOffsetRowIndex]);
             }
         }
 
@@ -89,7 +90,7 @@ namespace CryptoInvestAnalyst
 
                     for (int currentComperable = 0; currentComperable < comperables.Length; currentComperable++)
                     {
-                        var newPriceInfo = new PriceInfo(comperables[currentComperable], ReadPrice(parsedAnswer[currentParsedAnswerIndex], comperables[currentComperable]));
+                        var newPriceInfo = new PriceInfo(comperables[currentComperable], _cryptoParser.ReadPrice(parsedAnswer[currentParsedAnswerIndex], comperables[currentComperable]));
                         comperableToComperersPrice[comperers[currentComperer]].Add(newPriceInfo);
 
                         currentParsedAnswerIndex++;
@@ -99,31 +100,6 @@ namespace CryptoInvestAnalyst
                 }
 
                 return comperableToComperersPrice;
-            }
-            catch (Exception exception)
-            {
-                throw new CryptoBaseAskExteption(exception);
-            }
-        }
-
-        private double ReadPrice(string parsedAnswerPriceInfo, Crypto comperable)
-        {
-            try
-            {
-                StringBuilder compareResult = new StringBuilder();
-
-                for (int i = _compareResultOffsetX + _cryptoInfoGiver.CryptoToApiName(comperable).Length - 1; i < parsedAnswerPriceInfo.Length; i++)
-                {
-                    if (parsedAnswerPriceInfo[i].IsMatch() == false)
-                        break;
-
-                    if (parsedAnswerPriceInfo[i] == CryptoInfoGiver.ApiFloatDotChar)
-                        compareResult.Append(CryptoInfoGiver.FloatDotChar);
-                    else
-                        compareResult.Append(parsedAnswerPriceInfo[i]);
-                }
-
-                return double.Parse(compareResult.ToString());
             }
             catch (Exception exception)
             {

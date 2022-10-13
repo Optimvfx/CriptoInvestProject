@@ -95,10 +95,11 @@
     <Compile Include="CryptoInfoGiverAPI\Class\Crypto.cs" />
     <Compile Include="CryptoInfoGiverAPI\CryptoInfoGiver.cs" />
     <Compile Include="CryptoInfoGiverAPI\CryptoInfoHistorialGiver.cs" />
+    <Compile Include="CryptoInfoGiverAPI\Interface\ICryptoInfoBlockchainGiver.cs" />
     <Compile Include="CryptoInfoGiverAPI\Interface\ICryptoInfoGiver.cs" />
     <Compile Include="CryptoInfoGiverAPI\Interface\ICryptoInfoHistorialGiver.cs" />
     <Compile Include="CryptoInfoGiverAPI\Interface\ICryptoInfoPriceGiver.cs" />
-    <Compile Include="Parse\CryptoParser.cs" />
+    <Compile Include="Parse\Models\CryptoParser.cs" />
     <Compile Include="Parse\Models\CryptoLableInfo.cs" />
     <Compile Include="Parse\Models\CryptoCurseInfo.cs" />
     <Compile Include="Parse\Parser.cs" />

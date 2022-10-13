@@ -62,11 +62,5 @@
     <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Algoritms4editionProject\AlgoritmsProject.csproj">
-      <Project>{774e5108-680a-4bf6-9136-80806d3e564b}</Project>
-      <Name>AlgoritmsProject</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
