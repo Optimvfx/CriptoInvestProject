@@ -1,4 +1,4 @@
-﻿namespace CryptoInvestAnalyst
+﻿namespace CryptoInfoGiverSpace
 {
     public class CryptoCurseInfo
     {

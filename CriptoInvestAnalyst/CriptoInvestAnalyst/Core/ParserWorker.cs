@@ -3,7 +3,7 @@ using AngleSharp.Html.Parser;
 using System;
 using System.Net.Http;
 
-namespace CryptoInvestAnalyst
+namespace CryptoInfoGiverSpace
 {
     public class ParserWorker<T>
         where T : class

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CriptoInvestAnalyst", "CriptoInvestAnalyst\CriptoInvestAnalyst.csproj", "{148E8297-9B9E-450B-A3B4-985C402F571B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoInfoGiver", "CriptoInvestAnalyst\CryptoInfoGiver.csproj", "{148E8297-9B9E-450B-A3B4-985C402F571B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extenstions", "Extenstions\Extenstions.csproj", "{85A1EB17-66A6-4911-A02E-8BD55F517C8E}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphVisualizetion", "Visualizetion\GraphVisualizetion.csproj", "{6E7CBAD5-D366-425E-B776-B288D8F9016C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowCryptoGraph", "ShowCryptoGraph\ShowCryptoGraph.csproj", "{CD5516E1-D003-4818-AC25-BB15E2D7236A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoInvestAnalystAplicationCore", "CryptoInvestAnalystAplicationCore\CryptoInvestAnalystAplicationCore.csproj", "{F0D5A6B3-E9CC-4E49-9C18-13F72B4ECE64}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{CD5516E1-D003-4818-AC25-BB15E2D7236A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD5516E1-D003-4818-AC25-BB15E2D7236A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD5516E1-D003-4818-AC25-BB15E2D7236A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0D5A6B3-E9CC-4E49-9C18-13F72B4ECE64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0D5A6B3-E9CC-4E49-9C18-13F72B4ECE64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0D5A6B3-E9CC-4E49-9C18-13F72B4ECE64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0D5A6B3-E9CC-4E49-9C18-13F72B4ECE64}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

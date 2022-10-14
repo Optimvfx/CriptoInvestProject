@@ -50,9 +50,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CriptoInvestAnalyst\CriptoInvestAnalyst.csproj">
+    <ProjectReference Include="..\CriptoInvestAnalyst\CryptoInfoGiver.csproj">
       <Project>{148e8297-9b9e-450b-a3b4-985c402f571b}</Project>
-      <Name>CriptoInvestAnalyst</Name>
+      <Name>CryptoInfoGiver</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CryptoInvestAnalystAplicationCore\CryptoInvestAnalystAplicationCore.csproj">
+      <Project>{f0d5a6b3-e9cc-4e49-9c18-13f72b4ece64}</Project>
+      <Name>CryptoInvestAnalystAplicationCore</Name>
     </ProjectReference>
     <ProjectReference Include="..\Extenstions\Extenstions.csproj">
       <Project>{85a1eb17-66a6-4911-a02e-8bd55f517c8e}</Project>

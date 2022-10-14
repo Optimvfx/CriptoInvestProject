@@ -5,7 +5,7 @@ using System;
 using Extenstions;
 using System.Linq;
 
-namespace CryptoInvestAnalyst
+namespace CryptoInfoGiverSpace
 {
     public class CryptoInfoGiver : ICryptoInfoGiver
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CryptoInvestAnalyst
+namespace CryptoInfoGiverSpace
 {
     public interface ICriptoInfoPriceGiver
     {

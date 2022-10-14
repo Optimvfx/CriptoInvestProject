@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CryptoInvestAnalyst
+namespace CryptoInfoGiverSpace
 {
     public class CryptoInfoHistorialGiver : ICryptoInfoHistorialGiver
     {
@@ -75,9 +75,6 @@ namespace CryptoInvestAnalyst
                     throw new ArgumentException();
 
                 var parsedAnswer = _cryptoInfoGiver.Parse(_getCurrentDayPriceAskAddres, GetExtraDayPriceSourceArguments(comperable, comperer, date));
-
-                foreach (var p in parsedAnswer)
-                    Console.WriteLine(p);
 
                 return _cryptoParser.ReadPrice(parsedAnswer[_dataPriceRowIndex], comperable);
             }

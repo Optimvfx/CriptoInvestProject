@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CD5516E1-D003-4818-AC25-BB15E2D7236A}</ProjectGuid>
+    <ProjectGuid>{F0D5A6B3-E9CC-4E49-9C18-13F72B4ECE64}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>ShowCryptoGraph</RootNamespace>
-    <AssemblyName>ShowCryptoGraph</AssemblyName>
+    <RootNamespace>CryptoInvestAnalystAplicationCore</RootNamespace>
+    <AssemblyName>CryptoInvestAnalystAplicationCore</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -38,7 +38,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,7 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CryptoGraphShower.cs" />
+    <Compile Include="CryptoAplicationCore.cs" />
+    <Compile Include="CryptoInfoSource.cs" />
+    <Compile Include="Procent.cs" />
+    <Compile Include="ReadOnlyCryptoInfoSource.cs" />
+    <Compile Include="Forecast.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +64,10 @@
     <ProjectReference Include="..\Extenstions\Extenstions.csproj">
       <Project>{85a1eb17-66a6-4911-a02e-8bd55f517c8e}</Project>
       <Name>Extenstions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShowCryptoGraph\ShowCryptoGraph.csproj">
+      <Project>{cd5516e1-d003-4818-ac25-bb15e2d7236a}</Project>
+      <Name>ShowCryptoGraph</Name>
     </ProjectReference>
     <ProjectReference Include="..\Visualizetion\GraphVisualizetion.csproj">
       <Project>{6e7cbad5-d366-425e-b776-b288d8f9016c}</Project>

@@ -1,4 +1,4 @@
-﻿using CryptoInvestAnalyst;
+﻿using CryptoInfoGiverSpace;
 using GraphVisualizetion;
 using System;
 using System.Collections.Generic;
