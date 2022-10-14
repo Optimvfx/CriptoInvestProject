@@ -21,9 +21,16 @@ namespace Program
 
             var cryptoAplicationCore = new CryptoAplicationDataBase(chFullInfo, crInfo);
 
-            cryptoAplicationCore.TryAddCriptoInfoSource(new CryptoInfoSource(new[] { new Forecast(Crypto.USD, new TimeSpan(2000, 0, 0, 0), new DateTime(2018, 1, 1), 15000, Crypto.BTC) }));
+            cryptoAplicationCore.TryAddCriptoInfoSource(new CryptoInfoSource(
+                new[] { new Forecast(Crypto.USD, new TimeSpan(2000, 0, 0, 0), new DateTime(2018, 1, 1), 15000, Crypto.BTC) },
+                "Pasha"));
 
-            cryptoAplicationCore.TryGetForecastResult(0, 0, out Procent result, out double start, out double end);
+            cryptoAplicationCore.TryAddCriptoInfoSource(new CryptoInfoSource(
+    new[] { new Forecast(Crypto.USD, new TimeSpan(100, 0, 0, 0), new DateTime(2018, 1, 1), 10000, Crypto.BTC),
+            new Forecast(Crypto.USD, new TimeSpan(2000, 0, 0, 0), new DateTime(2020, 1, 1), 20000, Crypto.BTC)},
+    "Vasa"));
+
+            Console.WriteLine(cryptoAplicationCore.GetTopSourceByForcasts().First().Name);
 
             show.ShowCryptoGraph(new CryptoInfoHistorialGiver(new CryptoInfoGiverSpace.CryptoInfoGiver()).GetDaysPrice(Crypto.USD, Crypto.ETH, 2000));
             //     show.ShowCryptoGraph(new CryptoInfoHistorialGiver(new CryptoInfoGiverSpace()).GetDatePrice(Crypto.BTC, Crypto.ETH, 2000));

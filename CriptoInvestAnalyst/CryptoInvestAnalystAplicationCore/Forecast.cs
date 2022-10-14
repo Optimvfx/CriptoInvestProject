@@ -21,14 +21,14 @@ namespace CryptoInvestAnalystAplicationCore
         public float ExceptedPrice => _price;
         public Crypto Comparer => _comparable;
 
-        public Forecast(Crypto crypto, TimeSpan length, DateTime creationData, float price, Crypto comparable)
+        public Forecast(Crypto crypto, TimeSpan length, DateTime creationData, UFloat price, Crypto comparable)
         {
             _crypto = crypto;
             _length = length;
 
             _creationData = creationData;
 
-            _price = price;
+            _price = (float)price;
             _comparable = comparable;
         }
     }

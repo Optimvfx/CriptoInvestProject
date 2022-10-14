@@ -21,6 +21,17 @@ namespace CryptoInvestAnalystAplicationCore
             _cryptoInfoSources = new List<CryptoInfoSource>();
         }
 
+        public IEnumerable<CryptoInfoSource> GetTopSourceByForcasts()
+        {
+            return _cryptoInfoSources.OrderBy(source =>
+            {
+                if (TryGetForcastsMedianSecces(source, out double median) == false)
+                    return double.MinValue;
+
+                return -median;
+            });
+        }
+
         public bool TryAddCriptoInfoSource(ReadonlyCryptoInfoSource source)
         {
             foreach (var forecast in source.AllForecasts)
@@ -29,7 +40,7 @@ namespace CryptoInvestAnalystAplicationCore
                     return false;
             }
 
-            _cryptoInfoSources.Add(new CryptoInfoSource(source.AllForecasts));
+            _cryptoInfoSources.Add(new CryptoInfoSource(source.AllForecasts, source.Name));
             return true;
         }
 
@@ -56,7 +67,17 @@ namespace CryptoInvestAnalystAplicationCore
             return _cryptoInfoSources[cryptoInfoSourceIndex].TryAddForecast(forecast);
         }
 
-        public bool TryGetForecastResult(int cryptoInfoSourceIndex, int forecastIndex, out  Procent resultWitchExceptedDifferenceProcent, out double exceptedResult, out double result)
+        public bool TryGetForcastsMedianSecces(int cryptoInfoSourceIndex, out double medianResult)
+        {
+            medianResult = 0.0f;
+
+            if (_cryptoInfoSources.OutOfBounds(cryptoInfoSourceIndex))
+                return false;
+
+            return TryGetForcastsMedianSecces(_cryptoInfoSources[cryptoInfoSourceIndex], out medianResult);
+        }
+
+        public bool TryGetForecastResult(int cryptoInfoSourceIndex, int forecastIndex, out double resultWitchExceptedDifferenceProcent, out double exceptedResult, out double result)
         {
             exceptedResult = 0.0;
             result = 0.0;
@@ -68,6 +89,35 @@ namespace CryptoInvestAnalystAplicationCore
 
             if (_cryptoInfoSources[cryptoInfoSourceIndex].TryGetForecastByIndex(out Forecast forecast, forecastIndex) == false)
                 return false;
+
+            return TryGetForecastResult(forecast, out resultWitchExceptedDifferenceProcent, out exceptedResult, out result);
+        }
+
+        private bool TryGetForcastsMedianSecces(CryptoInfoSource cryptoInfoSource, out double medianResult)
+        {
+            medianResult = 0.0;
+
+            var sum = 0.0;
+            var forecastCount = 0;
+
+            foreach (var forecast in cryptoInfoSource.AllForecasts)
+            {
+                if (TryGetForecastResult(forecast, out double result, out double exepted, out double acctual) == false)
+                    return false;
+
+                sum += result;
+            }
+
+            medianResult = sum / forecastCount;
+
+            return true;
+        }
+
+        private bool TryGetForecastResult(Forecast forecast, out double resultWitchExceptedDifferenceProcent, out double exceptedResult, out double result)
+        {
+            exceptedResult = 0;
+            result = 0;
+            resultWitchExceptedDifferenceProcent = 0f;
 
             try
             {
@@ -81,13 +131,13 @@ namespace CryptoInvestAnalystAplicationCore
 
                 var difference = exceptedResult - result;
 
-                resultWitchExceptedDifferenceProcent = (Procent)(-difference / exceptedResult);
+                resultWitchExceptedDifferenceProcent = (-difference / exceptedResult);
 
                 return true;
             }
             catch
             {
-                return false;   
+                return false;
             }
         }
     }

@@ -6,15 +6,18 @@ namespace CryptoInvestAnalystAplicationCore
 {
     public class ReadonlyCryptoInfoSource
     {
+        public readonly string Name;
+
         private protected readonly List<Forecast> Forecasts;
 
         public int ForecastsLength => Forecasts.Count;
 
         public IEnumerable<Forecast> AllForecasts => Forecasts;
 
-        public ReadonlyCryptoInfoSource(IEnumerable<Forecast> forecasts)
+        public ReadonlyCryptoInfoSource(IEnumerable<Forecast> forecasts, string name)
         {
             Forecasts = forecasts.ToList();
+            Name = name;
         }
 
         public ReadonlyCryptoInfoSource()

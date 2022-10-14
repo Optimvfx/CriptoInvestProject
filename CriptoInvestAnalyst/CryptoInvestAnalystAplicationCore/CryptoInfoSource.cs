@@ -5,7 +5,7 @@ namespace CryptoInvestAnalystAplicationCore
 {
     public class CryptoInfoSource : ReadonlyCryptoInfoSource
     {
-        public CryptoInfoSource(IEnumerable<Forecast> forecasts) : base(forecasts)
+        public CryptoInfoSource(IEnumerable<Forecast> forecasts, string name) : base(forecasts, name)
         {
           
         }
