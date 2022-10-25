@@ -1,4 +1,0 @@
-﻿{"id": 920958,
-"symbol": "ZXC",
-"partner_symbol": "ZXC",
-"data_available_from": 1529971200}
